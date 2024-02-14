@@ -1,13 +1,14 @@
 plugins {
     id("com.android.application")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.aprendendo.wearos_audio"
+    namespace = "com.example.acessibilidade_audio"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.aprendendo.wearos_audio"
+        applicationId = "com.example.acessibilidade_audio"
         minSdk = 30
         targetSdk = 33
         versionCode = 1
@@ -27,6 +28,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 

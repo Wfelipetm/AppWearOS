@@ -1,4 +1,5 @@
-package com.aprendendo.wearos_audio;
+package com.example.acessibilidade_audio;
+import android.R;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.AudioDeviceInfo;
@@ -18,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        TextView textView = findViewById(R.id.textview1);
-        Button btnBluetoothSettings = findViewById(R.id.btnBluetoothSettings);
+        setContentView(R.layout.test_list_item);
+        TextView textView = findViewById(R.id.text2);
+        Button btnBluetoothSettings = findViewById(R.id.button1);
         Intent serviceIntent = new Intent(this, Notificacao.class);
         startService(serviceIntent);
 
@@ -49,5 +50,3 @@ public class MainActivity extends AppCompatActivity {
         ttsManager.shutdown();
     }
 }
-
-

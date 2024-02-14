@@ -1,4 +1,4 @@
-package com.aprendendo.wearos_audio;
+package com.example.acessibilidade_audio;
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;

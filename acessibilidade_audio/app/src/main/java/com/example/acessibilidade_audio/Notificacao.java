@@ -1,4 +1,4 @@
-package com.aprendendo.wearos_audio;
+package com.example.acessibilidade_audio;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;

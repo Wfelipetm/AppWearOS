@@ -1,4 +1,4 @@
-package com.aprendendo.wearos_audio
+package com.example.acessibilidade_audio
 import android.content.Context
 import android.content.pm.PackageManager
 import android.media.AudioManager

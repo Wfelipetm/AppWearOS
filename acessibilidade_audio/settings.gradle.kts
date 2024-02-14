@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "WearOS_Audio"
+rootProject.name = "acessibilidade_audio"
 include(":app")
  
