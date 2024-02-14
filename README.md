@@ -1,45 +1,68 @@
-# Wear OS Audio Assistance App - Projeto DOMA
+# Acessibilidade Audio
 
-Este projeto consiste em um aplicativo desenvolvido pela empresa DOMA para dispositivos Wear OS, voltado para oferecer assistência para pessoas com deficiência visual. O aplicativo monitora as notificações do dispositivo e converte-as em áudio, proporcionando uma experiência de uso acessível e inclusiva.
+This repository contains an Android application for accessibility that provides audio notifications and checks for Bluetooth audio device connectivity. The code is organized into several classes to manage audio, notifications, and text-to-speech functionalities.
 
-## Funcionalidades
+## Table of Contents
 
-### AudioHelper
+- [Audio](#audio)
+- [Notificacao](#notificacao)
+- [Texto](#texto)
+- [AudioHelpers](#audiohelpers)
+- [MainActivity](#mainactivity)
 
-A classe `AudioHelper` fornece métodos para verificar a disponibilidade de saída de áudio e registrar callbacks para detectar dispositivos de áudio adicionados ou removidos. Principais funções:
+## Audio
 
-- `audioOutputAvailable(int type)`: Verifica se a saída de áudio especificada está disponível no dispositivo.
-- `registerAudioDeviceCallback()`: Registra um callback para detectar dispositivos de áudio adicionados ou removidos.
+The `Audio` class handles audio-related functionalities, such as checking for the availability of audio output devices and registering audio device callbacks. It also provides a method to show Bluetooth settings.
 
-### TexttoSpeech
+### Methods
 
-A classe `TexttoSpeech` é responsável por fornecer funcionalidades de conversão de texto para fala (Text-to-Speech, TTS). Principais funções:
+- `audioOutputAvailable(int type): boolean`: Checks if a specific audio output type is available.
+- `registerAudioDeviceCallback()`: Registers an audio device callback to monitor device changes.
+- `showBluetoothSettings()`: Opens the Bluetooth settings activity.
 
-- `speak(String text)`: Converte o texto especificado em áudio e reproduz em voz alta.
-- `shutdown()`: Interrompe a reprodução de áudio e libera recursos do TextToSpeech.
+## Notificacao
 
-### NotificationService
+The `Notificacao` class extends `NotificationListenerService` to listen for incoming notifications. It uses the `Texto` class to convert notification text to speech.
 
-O serviço `NotificationService` estende a classe `NotificationListenerService` e é responsável por monitorar as notificações do dispositivo. Principais funções:
+### Methods
 
-- `onNotificationPosted(StatusBarNotification sbn)`: Invocado quando uma nova notificação é postada. Converte o texto da notificação em áudio e reproduz em voz alta.
-- `onNotificationRemoved(StatusBarNotification sbn)`: Invocado quando uma notificação é removida.
+- `onCreate()`: Initializes the `Texto` class.
+- `onDestroy()`: Shuts down the text-to-speech engine.
+- `onNotificationPosted(StatusBarNotification sbn)`: Speaks out the content of the incoming notification.
+- `onNotificationRemoved(StatusBarNotification sbn)`: Logs the removal of notifications.
 
-### MainActivity
+## Texto
 
-A `MainActivity` é a atividade principal do aplicativo, onde a interface do usuário é exibida e as funcionalidades são utilizadas. Principais funcionalidades:
+The `Texto` class encapsulates the text-to-speech functionality. It initializes the text-to-speech engine, handles initialization status, and provides methods to speak and shut down the engine.
 
-- Inicia o serviço de escuta de notificações (`NotificationService`).
-- Verifica a disponibilidade de saída de áudio e atualiza a interface do usuário de acordo.
-- Fornece botão para abrir as configurações Bluetooth.
-- Utiliza o `TexttoSpeech` para falar mensagens para o usuário.
+### Methods
 
-## Instruções de Uso
+- `onInit(int status)`: Handles the initialization of the text-to-speech engine.
+- `speak(String text)`: Converts the given text to speech.
+- `shutdown()`: Stops and shuts down the text-to-speech engine.
 
-1. Instale o aplicativo no seu dispositivo Wear OS.
-2. Conceda as permissões necessárias, especialmente a permissão para acessar as notificações do dispositivo.
-3. Ao receber notificações, o aplicativo as converterá em áudio e as reproduzirá em voz alta para o usuário.
+## AudioHelpers
 
-## Contribuições
+The `AudioHelpers` class provides helper methods for audio-related operations. It is used in the `MainActivity` class.
 
-Contribuições para o desenvolvimento e aprimoramento do aplicativo são bem-vindas. Sinta-se à vontade para enviar pull requests ou relatar problemas no repositório do projeto.
+### Methods
+
+- `audioOutputAvailable(int type): boolean`: Checks if a specific audio output type is available.
+
+## MainActivity
+
+The `MainActivity` class serves as the main entry point of the application. It checks for Bluetooth A2DP audio device connectivity, displays appropriate messages, and allows users to navigate to Bluetooth settings.
+
+### Methods
+
+- `onCreate(Bundle savedInstanceState)`: Initializes the UI and checks for Bluetooth audio device connectivity.
+- `onDestroy()`: Shuts down the text-to-speech engine.
+
+## Usage
+
+1. Clone the repository.
+2. Open the project in Android Studio.
+3. Build and run the application on an Android device.
+
+Feel free to explore and modify the code to suit your needs.
+****
